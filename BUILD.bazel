@@ -1,0 +1,18 @@
+load("@rules_pkg//:pkg.bzl", "pkg_tar", "pkg_deb")
+
+
+pkg_tar(
+    name = "test_pkg",
+    srcs = ["test.txt"],
+)
+
+pkg_deb(
+    name = "test_deb",
+    package = "test",
+    data = ":test_pkg",
+    architecture = "amd64",
+    maintainer = "Akash",
+    version = "1",
+    description = "testing debian digest",
+    tags = ["deliverable"],
+)
